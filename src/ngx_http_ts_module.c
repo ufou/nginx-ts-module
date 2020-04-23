@@ -216,6 +216,12 @@ ngx_http_ts_read_event_handler(ngx_http_request_t *r)
             return;
         }
 
+        for (cl = rb->bufs; cl;) {
+            tl = cl;
+            cl = cl->next;
+            ngx_free_chain(r->pool, tl);
+        }
+
         rb->bufs = NULL;
     }
 }
