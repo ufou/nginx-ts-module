@@ -140,7 +140,7 @@ ngx_stream_ts_handler(ngx_stream_session_t *s);
 }
 
 
-static voi
+static void
 ngx_stream_ts_read_handler(ngx_event_t *rev)
 {
     ssize_t                n;
