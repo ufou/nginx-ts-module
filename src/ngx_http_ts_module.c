@@ -185,7 +185,6 @@ ngx_http_ts_read_event_handler(ngx_http_request_t *r)
     ngx_http_ts_ctx_t        *ctx;
     ngx_http_request_body_t  *rb;
     ngx_chain_t              *cl;
-    ngx_http_ts_loc_conf_t   *tlcf;
 
     if (ngx_exiting || ngx_terminate) {
         ngx_http_finalize_request(r, NGX_HTTP_CLOSE);
@@ -193,7 +192,6 @@ ngx_http_ts_read_event_handler(ngx_http_request_t *r)
     }
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_ts_module);
-    tlcf = ngx_http_get_module_loc_conf(r, ngx_http_ts_module);
 
     rb = r->request_body;
 
@@ -220,7 +218,7 @@ ngx_http_ts_read_event_handler(ngx_http_request_t *r)
         }
 
         for (cl = rb->bufs; cl;) {
-            tlcf = cl;
+            tl = cl;
             cl = cl->next;
             ngx_free_chain(r->pool, tlcf);
         }
