@@ -193,6 +193,7 @@ ngx_http_ts_read_event_handler(ngx_http_request_t *r)
     }
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_ts_module);
+    tlcf = ngx_http_get_module_loc_conf(r, ngx_http_ts_module);
 
     rb = r->request_body;
 
