@@ -185,6 +185,7 @@ ngx_http_ts_read_event_handler(ngx_http_request_t *r)
     ngx_http_ts_ctx_t        *ctx;
     ngx_http_request_body_t  *rb;
     ngx_chain_t              *cl;
+    ngx_chain_t              *tl;
 
     if (ngx_exiting || ngx_terminate) {
         ngx_http_finalize_request(r, NGX_HTTP_CLOSE);
