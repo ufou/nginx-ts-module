@@ -184,6 +184,7 @@ ngx_http_ts_read_event_handler(ngx_http_request_t *r)
     ngx_int_t                 rc;
     ngx_http_ts_ctx_t        *ctx;
     ngx_http_request_body_t  *rb;
+    ngx_chain_t              *cl;
 
     if (ngx_exiting || ngx_terminate) {
         ngx_http_finalize_request(r, NGX_HTTP_CLOSE);
@@ -216,7 +217,6 @@ ngx_http_ts_read_event_handler(ngx_http_request_t *r)
             return;
         }
 
-        cl = rb->bufs;
         for (cl = rb->bufs; cl;) {
             tl = cl;
             cl = cl->next;
